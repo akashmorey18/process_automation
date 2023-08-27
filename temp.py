@@ -119,8 +119,8 @@ if selected_page == "Creatives Upload" :
         image = Image.open(uploaded_image)
         st.image(image, caption="Uploaded Image", use_column_width=True)
 
-        # if st.button("Upload to SharePoint"):
-        #     image_content = uploaded_image.read()
+        if st.button("Upload to SharePoint"):
+            image_content = uploaded_image.read()
         #     folder_url = "/sites/your-site/Shared Documents/FolderName"
         #     upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
         #     st.success("Image uploaded to SharePoint!")
