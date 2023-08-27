@@ -9,8 +9,8 @@ from openpyxl import load_workbook
 import streamlit as st
 from PIL import Image
 from office365.runtime.auth.authentication_context import AuthenticationContext
-from office365.sharepoint.client_context import ClientContext
-from office365.sharepoint.file_creation_information import FileCreationInformation
+# from office365.sharepoint.client_context import ClientContext
+# from office365.sharepoint.file_creation_information import FileCreationInformation
 
 # SharePoint authentication using client ID and client secret
 # site_url = "/sites/AutomationProject/Shared%20Documents/BB/"
