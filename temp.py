@@ -83,7 +83,7 @@ if selected_page == "Offer and Content Creation":
     # Display a success message if data is successfully saved
 
 
-if selected_page == "Offer and Content Creation":
+if selected_page == "Creatives Upload" :
 
     def main():
         st.title("Image Upload Example")
