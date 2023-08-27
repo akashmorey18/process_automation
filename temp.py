@@ -17,7 +17,7 @@ site_url = "/sites/AutomationProject/Shared%20Documents/BB/"
 client_id = '96026163-d873-4cca-abd4-7acf4fa3e1a3'
 client_secret = 'DolnVP4E9IIoLNf/86GHbABu+djbFE679RerpV5Z9Hs='
 
-ctx_auth = AuthenticationContext(url=site_url)
+# ctx_auth = AuthenticationContext(url=site_url)
 # ctx_auth.acquire_token_for_app(client_id, client_secret)
 # ctx = ClientContext(site_url, ctx_auth)
 
