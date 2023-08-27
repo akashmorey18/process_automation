@@ -2,6 +2,8 @@ import os
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import streamlit as st
+from PIL import Image
 from openpyxl import load_workbook
 
 # Set the page title and header
@@ -77,5 +79,20 @@ if selected_page == "Offer and Content Creation":
             st.success("Data saved successfully!")
         except Exception as e:
             st.error(f"An error occurred while saving the data: {e}")
-
+            
     # Display a success message if data is successfully saved
+
+
+if selected_page == "Offer and Content Creation":
+
+    def main():
+        st.title("Image Upload Example")
+        
+        uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
+        
+        if uploaded_image is not None:
+            image = Image.open(uploaded_image)
+            st.image(image, caption="Uploaded Image", use_column_width=True)
+    
+    if __name__ == "__main__":
+        main()
