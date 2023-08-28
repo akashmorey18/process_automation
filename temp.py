@@ -33,6 +33,20 @@ def upload_to_sharepoint(file_content, file_name, folder_url):
     ctx.execute_query()
 
 
+def open_image_from_sharepoint(image_name, folder_url):
+    ctx_auth = AuthenticationContext(url=site_url)
+    ctx_auth.acquire_token_for_app(client_id, client_secret)
+    ctx = ClientContext(site_url, ctx_auth)
+
+    target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
+    image_file = target_folder.files.get_by_url(image_name)
+    ctx.load(image_file)
+    ctx.execute_query()
+
+    image_content = image_file.read()
+    return image_content
+
+
 # Set the page title and header
 st.set_page_config(page_title="Fashion & Lifestyle Merchandising")
 st.title("Fashion & Lifestyle Merchandising")
@@ -114,6 +128,17 @@ if selected_page == "Creatives Upload" :
 
     def main():
         st.title("Image Upload to SharePoint")
+        st.title("Image Viewer from SharePoint")
+
+        # Replace with the appropriate folder URL and image name
+        folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
+        image_name = "The-Hook-Model.png"
+
+        # Open and display the image
+        image_content = open_image_from_sharepoint(image_name, folder_url)
+        image = Image.open(io.BytesIO(image_content))
+        st.image(image, caption="Image from SharePoint", use_column_width=True)
+
     
     uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
     
