@@ -8,11 +8,15 @@ from openpyxl import load_workbook
 
 import streamlit as st
 from PIL import Image
-import office365
+# import office365
 
 # from office365.runtime.auth.authentication_context import AuthenticationContext
 # from office365.sharepoint.client_context import ClientContext
 # from office365.sharepoint.files.file_creation_information import FileCreationInformation
+
+from office365.sharepoint.client_context import ClientContext
+from office365.runtime.auth.authentication_context import AuthenticationContext
+from office365.sharepoint.files.file import File
 
 # SharePoint authentication using client ID and client secret
 
