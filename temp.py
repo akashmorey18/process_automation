@@ -31,9 +31,14 @@ def upload_to_sharepoint(file_content, file_name, folder_url):
     
     target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
     file_info = FileCreationInformation()
-    file_info.content = file_content
     file_info.url = file_name
-    uploaded_file = target_folder.files.add(file_info)
+    target_file = target_folder.files.add(file_info)
+    
+    # Update the content of the target file
+    ctx.execute_query()
+    with target_file.file.open_binary_stream() as binary_stream:
+        binary_stream.write(file_content)
+    
     ctx.execute_query()
     
 # Set the page title and header
