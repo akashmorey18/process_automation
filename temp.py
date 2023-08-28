@@ -25,7 +25,7 @@ ctx = ClientContext(site_url, ctx_auth)
 
 def upload_to_sharepoint(file_content, file_name, folder_url):
     file_info = FileCreationInformation()
-    file_info.content = file_content
+    file_info.content = file_content  # Set the content of the file
     file_info.url = file_name
     target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
     uploaded_file = target_folder.files.add(file_info)
@@ -126,5 +126,5 @@ if selected_page == "Creatives Upload" :
             upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
             st.success("Image uploaded to SharePoint!")
           
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+main()
