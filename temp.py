@@ -6,9 +6,6 @@ import streamlit as st
 from PIL import Image
 from openpyxl import load_workbook
 
-import streamlit as st
-from PIL import Image
-
 from office365.runtime.auth.authentication_context import AuthenticationContext
 from office365.sharepoint.client_context import ClientContext
 from office365.sharepoint.file_creation_information import FileCreationInformation
