@@ -26,12 +26,13 @@ ctx = ClientContext(site_url, ctx_auth)
 # Upload a file to SharePoint using the office365 library
 def upload_to_sharepoint(file_content, file_name, folder_url):
     file_info = FileCreationInformation()
-    file_info.content = file_content
     file_info.url = file_name
-    uploaded_file = ctx.web.get_folder_by_server_relative_url(folder_url).files.add(file_info)
+    
+    # Upload the file content using ContentStream
+    ctx.web.get_folder_by_server_relative_url(folder_url).files.add_using_path(
+        file_info, file_content, overwrite=True)
     ctx.execute_query()
-
-
+    
 # Set the page title and header
 st.set_page_config(page_title="Fashion & Lifestyle Merchandising")
 st.title("Fashion & Lifestyle Merchandising")
