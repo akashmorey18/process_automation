@@ -3,5 +3,4 @@ office365_rest_client==2.2.0
 Office365-REST-Python-Client
 openpyxl==3.1.2
 pandas==1.5.3
-Pillow==10.0.0
 streamlit==1.22.0
