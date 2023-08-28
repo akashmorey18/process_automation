@@ -114,17 +114,17 @@ if selected_page == "Creatives Upload" :
     def main():
         st.title("Image Upload to SharePoint")
     
-uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
+    uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
+    
+    if uploaded_image is not None:
+        image = Image.open(uploaded_image)
+        st.image(image, caption="Uploaded Image", use_column_width=True)
 
-if uploaded_image is not None:
-    image = Image.open(uploaded_image)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
-
-    if st.button("Upload to SharePoint"):
-        image_content = uploaded_image.read()
-        folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
-        upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
-        st.success("Image uploaded to SharePoint!")
+        if st.button("Upload to SharePoint"):
+            image_content = uploaded_image.read()
+            folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
+            upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
+            st.success("Image uploaded to SharePoint!")
           
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()
