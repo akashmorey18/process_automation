@@ -127,4 +127,4 @@ if selected_page == "Creatives Upload" :
             st.success("Image uploaded to SharePoint!")
           
 if __name__ == "__main__":
-main()
+    main()
