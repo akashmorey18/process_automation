@@ -25,8 +25,9 @@ ctx = ClientContext(site_url, ctx_auth)
 
 def upload_to_sharepoint(file_content, file_name, folder_url):
     file_info = FileCreationInformation()
-    file_info.content = file_content  # Set the content of the file
+    file_info.content = file_content
     file_info.url = file_name
+    file_info.overwrite = True
     target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
     uploaded_file = target_folder.files.add(file_info)
     ctx.execute_query()
