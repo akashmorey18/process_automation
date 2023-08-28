@@ -23,24 +23,15 @@ ctx_auth = AuthenticationContext(url=site_url)
 ctx_auth.acquire_token_for_app(client_id, client_secret)
 ctx = ClientContext(site_url, ctx_auth)
 
-# Upload a file to SharePoint using the office365 library
 def upload_to_sharepoint(file_content, file_name, folder_url):
-    ctx_auth = AuthenticationContext(url=site_url)
-    ctx_auth.acquire_token_for_app(client_id, client_secret)
-    ctx = ClientContext(site_url, ctx_auth)
-    
-    target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
     file_info = FileCreationInformation()
+    file_info.content = file_content
     file_info.url = file_name
-    target_file = target_folder.files.add(file_info)
-    
-    # Update the content of the target file
+    target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
+    uploaded_file = target_folder.files.add(file_info)
     ctx.execute_query()
-    with target_file.file.open_binary_stream() as binary_stream:
-        binary_stream.write(file_content)
-    
-    ctx.execute_query()
-    
+
+
 # Set the page title and header
 st.set_page_config(page_title="Fashion & Lifestyle Merchandising")
 st.title("Fashion & Lifestyle Merchandising")
@@ -123,7 +114,6 @@ if selected_page == "Creatives Upload" :
     def main():
         st.title("Image Upload to SharePoint")
     
-    # Display the uploaded image and allow uploading to SharePoint
     uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
     
     if uploaded_image is not None:
@@ -133,9 +123,8 @@ if selected_page == "Creatives Upload" :
         if st.button("Upload to SharePoint"):
             image_content = uploaded_image.read()
             folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
-            file_name = uploaded_image.name
-            upload_to_sharepoint(image_content, file_name, folder_url)
+            upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
             st.success("Image uploaded to SharePoint!")
-            
+          
     if __name__ == "__main__":
         main()
