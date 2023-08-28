@@ -8,20 +8,21 @@ from openpyxl import load_workbook
 
 import streamlit as st
 from PIL import Image
-from office365.runtime.auth.authentication_context import AuthenticationContext
-from office365.sharepoint.client_context import ClientContext
-from office365.sharepoint.files.file_creation_information import FileCreationInformation
 
-# SharePoint authentication using client ID and client secret
+# from office365.runtime.auth.authentication_context import AuthenticationContext
+# from office365.sharepoint.client_context import ClientContext
+# from office365.sharepoint.files.file_creation_information import FileCreationInformation
 
-site_url = "https://tatadigitalltd.sharepoint.com/sites/AutomationProject"
-client_id = '96026163-d873-4cca-abd4-7acf4fa3e1a3'
-client_secret = 'DolnVP4E9IIoLNf/86GHbABu+djbFE679RerpV5Z9Hs='
+# # SharePoint authentication using client ID and client secret
+
+# site_url = "https://tatadigitalltd.sharepoint.com/sites/AutomationProject"
+# client_id = '96026163-d873-4cca-abd4-7acf4fa3e1a3'
+# client_secret = 'DolnVP4E9IIoLNf/86GHbABu+djbFE679RerpV5Z9Hs='
 
 
-ctx_auth = AuthenticationContext(url=site_url)
-ctx_auth.acquire_token_for_app(client_id, client_secret)
-ctx = ClientContext(site_url, ctx_auth)
+# ctx_auth = AuthenticationContext(url=site_url)
+# ctx_auth.acquire_token_for_app(client_id, client_secret)
+# ctx = ClientContext(site_url, ctx_auth)
 
 def upload_to_sharepoint(file_content, file_name, folder_url):
     file_info = FileCreationInformation()
@@ -116,15 +117,15 @@ if selected_page == "Creatives Upload" :
     
     uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
     
-    if uploaded_image is not None:
-        image = Image.open(uploaded_image)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+    # if uploaded_image is not None:
+    #     image = Image.open(uploaded_image)
+    #     st.image(image, caption="Uploaded Image", use_column_width=True)
 
-        if st.button("Upload to SharePoint"):
-            image_content = uploaded_image.read()
-            folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
-            upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
-            st.success("Image uploaded to SharePoint!")
+    #     if st.button("Upload to SharePoint"):
+    #         image_content = uploaded_image.read()
+    #         folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
+    #         upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
+    #         st.success("Image uploaded to SharePoint!")
           
     if __name__ == "__main__":
         main()
