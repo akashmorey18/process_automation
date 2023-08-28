@@ -14,7 +14,7 @@ from office365.runtime.auth.authentication_context import AuthenticationContext
 from office365.sharepoint.client_context import ClientContext
 from office365.sharepoint.files.file_creation_information import FileCreationInformation
 
-SharePoint authentication using client ID and client secret
+#SharePoint authentication using client ID and client secret
 
 site_url = "https://tatadigitalltd.sharepoint.com/sites/AutomationProject"
 client_id = '96026163-d873-4cca-abd4-7acf4fa3e1a3'
