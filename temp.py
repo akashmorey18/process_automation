@@ -1,5 +1,4 @@
 import os
-import io
 import streamlit as st
 import pandas as pd
 from datetime import datetime
@@ -133,7 +132,7 @@ if selected_page == "Creatives Upload" :
 
         # Replace with the appropriate folder URL and image name
         folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
-        image_name = "The-Hook-Model.png"
+        image_name = "example_image.jpg"
 
         # Open and display the image
         image_content = open_image_from_sharepoint(image_name, folder_url)
