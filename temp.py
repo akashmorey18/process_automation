@@ -28,7 +28,8 @@ def upload_to_sharepoint(file_content, file_name, folder_url):
     file_info.content = file_content
     file_info.url = file_name
     target_folder = ctx.web.get_folder_by_server_relative_url(folder_url)
-    uploaded_file = target_folder.files.add(file_info)
+    #uploaded_file = target_folder.files.add(file_info)
+    uploaded_file = ctx.web.get_folder_by_server_relative_url(folder_url).files.add(file_info)
     ctx.execute_query()
 
 
@@ -125,6 +126,12 @@ if selected_page == "Creatives Upload" :
             folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
             upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
             st.success("Image uploaded to SharePoint!")
+        if st.button("Upload to SharePoint"):
+            image_content = uploaded_image.read()
+            folder_url = "/sites/AutomationProject/Shared Documents/Fashion Merchandising"
+            upload_to_sharepoint(image_content, uploaded_image.name, folder_url)
+            st.success("Image uploaded to SharePoint!")
+
           
     if __name__ == "__main__":
         main()
