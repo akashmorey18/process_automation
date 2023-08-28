@@ -1,4 +1,4 @@
-office365-rest-client
+office365_rest_client
 
 Office365-REST-Python-Client
 openpyxl==3.1.2
