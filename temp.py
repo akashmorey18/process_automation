@@ -115,7 +115,7 @@ if selected_page == "Creatives Upload" :
     def main():
         st.title("Image Upload to SharePoint")
     
-    uploaded_image = st.file_uploader("Choose an image", type=["jpg", "png", "jpeg"])
+    uploaded_image = st.file_uploader("Choose an image", type=[".jpg", ".png", ".jpeg"])
     
     if uploaded_image is not None:
         image = Image.open(uploaded_image)
